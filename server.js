@@ -10,13 +10,14 @@ const io = socketio(server);
 
 
 // set static folder :
-app.use(express.static(path.join(__dirname , 'public')));
+app.use(express.static(path.join(__dirname ,'public')));
 
 // run when cilent connected:
-io.on('connection' , socket => {
+ io.on('connection' , socket => {
     console.log('New WS connection...');
+    socket.emit('message','Welcome to chatgroup');
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT =  4000 || process.env.PORT ;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, ()=> console.log(`Server running on port ${PORT}`));
